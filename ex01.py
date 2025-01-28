@@ -37,6 +37,8 @@ is returned.
 
 def encode(text, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789 ',
         shift=0, revlen=3, simple=False):
+    if not text:
+        return ""
     strL = ""
     # simple
     for char in text:
@@ -56,10 +58,6 @@ def encode(text, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789 ',
         else:
             scrambled += arr[-1][::-1]
         return scrambled
-
-
-print(encode("ABCDEFGH", shift=0, simple=False))  
-
 
 """
 Function neighbor_count_map
@@ -113,6 +111,8 @@ d = neighbor_count_map([(0, 0), (1, 1), (2, 2), (3, 3), (4, 4),
 """
 
 def neighbor_count_map(object_locations):
+    if not object_locations:
+        return {}
     width, height = 19, 9
     map_default = [['~' for _ in range(width)] for _ in range(height)]
     object_set = set(object_locations)
@@ -133,9 +133,3 @@ def neighbor_count_map(object_locations):
     for row in map_default:
         print(''.join(row))
     return neighbor_dict
-
-d = neighbor_count_map([(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), 
-                        (5, 5), (6, 6), (7, 7), (8, 8), (2, 1),
-                        (2, 0), (2, 3), (2, 4), (2, 2), (8, 4)]) 
-print(d[(2, 3)])  
-print(d[(8, 4)])  
