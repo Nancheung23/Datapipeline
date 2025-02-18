@@ -63,7 +63,7 @@ def csv_value_count(file_name: str,
                     search_value: str) -> int:
     # check file_name
     if not os.path.isfile(file_name):
-        return f"Can't find file {file_name}"
+        return 0
     # open file
     with open(file_name) as file:
         # get first column
@@ -80,10 +80,10 @@ def csv_value_count(file_name: str,
                 else:
                     continue
             if (count == 0):
-                return f"found no result of {search_value}"
+                return 0
             return count
         else:
-            return f"{column_name} is not a valid value"
+            return 0
 # print(csv_value_count("classroom_measurements.csv", 'id', 56269))
 # print(csv_value_count('classroom_measurements.csv', 'value', 23.5))
 # print(csv_value_count('classroom_measurements.csv', 'time', '09:11:44.407707'))
